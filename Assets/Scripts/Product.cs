@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+
 [RequireComponent(typeof(SpriteRenderer))]
 
 public class Product : MonoBehaviour
@@ -23,28 +24,28 @@ public class Product : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Edible седобно))
+        if (collision.gameObject.TryGetComponent(out Edible edible))
         {
             ChangePoints(1);
             Disable();
         }
 
-        if (collision.gameObject.TryGetComponent(out NotEdible неСедобно))
+        if (collision.gameObject.TryGetComponent(out NotEdible notEdible))
         {
             ChangePoints(-1);
             Disable();
         }
     }
 
-    private void ChangePoints(int uuu)
+    private void ChangePoints(int point)
     {
         if (IsEdible == true)
         {
-            ChangedPoints?.Invoke(uuu);
+            ChangedPoints?.Invoke(point);
         }
         else
         {
-            ChangedPoints?.Invoke(-uuu);
+            ChangedPoints?.Invoke(-point);
         }
     }
 }

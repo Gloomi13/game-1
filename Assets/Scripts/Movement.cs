@@ -1,11 +1,14 @@
 using UnityEngine;
+
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private ContactFilter2D _filter;
     [SerializeField] private float _speed = 100;
+
     private float _speedDown = 0.2f;
+    private float beamLength = -1.2f;
     private Rigidbody2D _rigidbody2D;
 
     private readonly RaycastHit2D[] _resulst = new RaycastHit2D[2];
@@ -27,7 +30,7 @@ public class Movement : MonoBehaviour
 
     private void Move(float direction)
     {
-        var collisionCoont = _rigidbody2D.Cast(transform.up, _filter, _resulst, -1.2f);
+        var collisionCoont = _rigidbody2D.Cast(transform.up, _filter, _resulst, beamLength);
 
         if (collisionCoont == 1)
         {

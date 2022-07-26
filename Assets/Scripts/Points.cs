@@ -38,9 +38,9 @@ public class Points : MonoBehaviour
             _best.text = _bestResult.ToString();
         }
     }
-    private void ChangingCurrentResult(int очко)
+    private void ChangingCurrentResult(int point)
     {
-        _currentResult += очко;
+        _currentResult += point;
         if (_currentResult < 0)
             _currentResult = 0;
         UpdateText();

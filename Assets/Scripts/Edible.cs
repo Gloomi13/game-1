@@ -9,9 +9,9 @@ public class Edible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Product продукт))
+        if (collision.gameObject.TryGetComponent(out Product product))
         {
-            if (продукт.IsEdible == true)
+            if (product.IsEdible == true)
                 _plus.Play();
             else
                 _minus.Play();
