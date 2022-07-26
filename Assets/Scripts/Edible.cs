@@ -11,7 +11,7 @@ public class Edible : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Product продукт))
         {
-            if (продукт.isEdible == true)
+            if (продукт.IsEdible == true)
                 _plus.Play();
             else
                 _minus.Play();

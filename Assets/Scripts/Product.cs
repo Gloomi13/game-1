@@ -4,20 +4,21 @@ using UnityEngine.Events;
 
 public class Product : MonoBehaviour
 {
-    public event UnityAction Deleted;
+    public event UnityAction  Disabled;
     public static event UnityAction<int> ChangedPoints;
 
-    public bool isEdible { get; private set; }
+    public bool IsEdible { get; private set; }
 
     public void Add(Sprite sprite, bool isEdible)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
-        this.isEdible = isEdible;
+        IsEdible = isEdible;
     }
-    private void Destroy()
+
+    private void Disable()
     {
-        Deleted?.Invoke();
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        Disabled?.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,19 +26,19 @@ public class Product : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out Edible седобно))
         {
             ChangePoints(1);
-            Destroy();
+            Disable();
         }
 
         if (collision.gameObject.TryGetComponent(out NotEdible неСедобно))
         {
             ChangePoints(-1);
-            Destroy();
+            Disable();
         }
     }
 
     private void ChangePoints(int uuu)
     {
-        if (isEdible == true)
+        if (IsEdible == true)
         {
             ChangedPoints?.Invoke(uuu);
         }

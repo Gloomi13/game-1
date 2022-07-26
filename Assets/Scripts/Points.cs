@@ -11,7 +11,7 @@ public class Points : MonoBehaviour
     private void OnEnable()
     {
         Product.ChangedPoints += ChangingCurrentResult;
-        Timer.TimeExpired += ChangeBestResult;
+        Timer.TimeGamesExpired += ChangeBestResult;
         Pause.Restart += Restart;
         WelcomeMenu.Beginning += Restart;
     }
@@ -19,7 +19,7 @@ public class Points : MonoBehaviour
     private void OnDisable()
     {
         Product.ChangedPoints -= ChangingCurrentResult;
-        Timer.TimeExpired -= ChangeBestResult;
+        Timer.TimeGamesExpired -= ChangeBestResult;
         Pause.Restart -= Restart;
         WelcomeMenu.Beginning -= Restart;
     }

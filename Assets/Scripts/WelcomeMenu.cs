@@ -17,7 +17,7 @@ public class WelcomeMenu : MonoBehaviour
         SwipeCheck.SwipeMade += Disable;
     }
 
-    private void Disable(int i)
+    private void Disable(float i)
     {
         Beginning?.Invoke();
         gameObject.SetActive(false);

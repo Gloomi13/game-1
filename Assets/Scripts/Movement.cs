@@ -4,7 +4,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private ContactFilter2D _filter;
-    [SerializeField] private float _speed = 200;
+    [SerializeField] private float _speed = 100;
+    private float _speedDown = 0.2f;
     private Rigidbody2D _rigidbody2D;
 
     private readonly RaycastHit2D[] _resulst = new RaycastHit2D[2];
@@ -24,21 +25,11 @@ public class Movement : MonoBehaviour
         SwipeCheck.SwipeMade -= Move;
     }
 
-    private bool CheckAbilityMove()
+    private void Move(float direction)
     {
-        var collisionCoont = _rigidbody2D.Cast(transform.up, _filter, _resulst, -1.3f);
+        var collisionCoont = _rigidbody2D.Cast(transform.up, _filter, _resulst, -1.2f);
 
         if (collisionCoont == 1)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private void Move(int direction)
-    {
-
-        if (CheckAbilityMove())
         {
             transform.Translate(transform.right * _speed * direction * Time.deltaTime);
         }
@@ -46,7 +37,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.down * 0.15f * Time.deltaTime, Space.World);
+        transform.Translate(Vector2.down * _speedDown * Time.deltaTime, Space.World);
 
         if (Input.GetKeyDown(KeyCode.A))
         {

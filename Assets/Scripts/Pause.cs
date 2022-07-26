@@ -29,11 +29,11 @@ public class Pause : MonoBehaviour
 
     private void OnDisable()
     {
-        Timer.TimeExpired -= ThePause;
+        Timer.TimeGamesExpired -= ThePause;
     }
 
     private void OnEnable()
     {
-        Timer.TimeExpired += ThePause;
+        Timer.TimeGamesExpired += ThePause;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class SwipeCheck : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
-    public static event UnityAction<int> SwipeMade;
+    public static event UnityAction<float> SwipeMade;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
